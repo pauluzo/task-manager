@@ -4,7 +4,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App name='Paul Okafor' date={Date()} />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

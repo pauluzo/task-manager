@@ -1,14 +1,9 @@
 import React from 'react';
 
-interface Props {
-  name: string,
-  date: string,
-}
-
-const App = (props: Props) : JSX.Element => {
+const App = () : JSX.Element => {
   return (
     <div>
-      My name is {props.name} and I registered on {props.date}
+      My name is Okafor Paul and I registered on {Date().toString()}
     </div>
   );
 }
