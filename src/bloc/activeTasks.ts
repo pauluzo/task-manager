@@ -42,4 +42,4 @@ class ActiveTasks {
   }
 }
 
-export const activeTask = new ActiveTasks()
+export const activeTask = new ActiveTasks();

@@ -20,7 +20,7 @@ const data2 = {
 
 const data3 = {
   title: 'Okafor Silas',
-  description: 'A Rugged interpretation',
+  description: 'A Doctoral interpretation',
   reminderDate: '18-04-18',
   dueDate: '15-08-18',
   isCompleted: true,
