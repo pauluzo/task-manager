@@ -31,15 +31,15 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
   const colorPalette = getColor();
 
   const style : React.CSSProperties = {
-    width: '330px',
+    minWidth: '270px',
     height: '120px',
-    margin: '20px',
+    margin: '10px 5px',
     display: 'flex',
     alignItems: 'center',
   }
 
   const style1 = {
-    width: '300px',
+    width: '91%',
     height: '100%',
     borderRadius: '20px',
     border: `2px solid ${colorPalette}`,
@@ -47,8 +47,8 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
   }
 
   const circularProg : React.CSSProperties = {
-    width: '50px',
-    height: '50px',
+    width: '45px',
+    height: '45px',
     borderRadius: '50%',
     left: '0',
     backgroundColor: `${colorPalette}`,
@@ -59,14 +59,14 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
   }
 
   const taskDetails : React.CSSProperties = {
-    marginLeft: '35px',
+    marginLeft: '25px',
+    marginRight: '5px',
     height: '100%',
-    marginRight: '10px',
     display: 'flex',
     alignItems: 'center'
   }
 
-  const detail1Container : React.CSSProperties = {
+  const detailContainer : React.CSSProperties = {
     width: '75%',
     height: '100%',
     display: 'flex',
@@ -78,7 +78,6 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
     height: '30%',
     textAlign: 'center',
     fontWeight: 600,
-    fontFamily: 'cursive',
     fontSize: '14px',
     display: 'flex',
     justifyContent: 'center',
@@ -87,7 +86,7 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
 
   const descContainer : React.CSSProperties = {
     paddingLeft: '5px',
-    fontFamily: 'cursive',
+    fontSize: '14px',
     height: '70%',
   }
 
@@ -97,7 +96,6 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
     display: 'flex',
     flexDirection: "column",
     alignItems: 'center',
-    fontFamily: 'cursive',
     textAlign: 'center'
   }
 
@@ -106,7 +104,7 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
       <div onClick={handleClick}
        style={{...style1, position: "absolute"}}>
         <div style={taskDetails}>
-          <div style={detail1Container}>
+          <div style={detailContainer}>
             <div style={titleContainer}>
               {
                 (task.title.length > 18) ? 
@@ -134,11 +132,11 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
           />
           <div style={dateContainer} >
             <div style={{height: '50%', width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-              <div style={{width: '25px', height: '25px', paddingTop: '5px'}}>
-                <Interval />
+              <div style={{width: '30px', height: '30px'}}>
+                <Alarm1 />
               </div>
               <div style={{fontSize: '12px',}}>
-                {task.reminderInterval}
+                {task.dueDate}
               </div>
             </div>
             <CustomDivider
@@ -147,11 +145,11 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
               width={80}
             />
             <div style={{height: '50%', width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-              <div style={{width: '30px', height: '30px'}}>
-                <Alarm1 />
+              <div style={{width: '25px', height: '25px', paddingTop: '5px'}}>
+                <Interval />
               </div>
               <div style={{fontSize: '12px',}}>
-                {task.dueDate}
+                {task.reminderInterval}
               </div>
             </div>
           </div>

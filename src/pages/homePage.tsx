@@ -51,7 +51,6 @@ const SideNavContainer : React.FC<{history: any, location: any}> = (props) : JSX
         style={{
           backgroundColor: 'midnightblue',
           position: 'fixed',
-          fontFamily: 'cursive',
         }}
         expanded={toggle}
         onToggle={setToggle}

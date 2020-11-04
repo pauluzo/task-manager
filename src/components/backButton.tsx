@@ -6,7 +6,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 const BackButton = (props) => {
   return (
     <FontAwesomeIcon 
-      style={{marginLeft: '10px'}}
+      style={{marginLeft: '10px', color: 'midnightblue'}}
       icon={faArrowLeft}
       size='2x'
       onClick={() => props.history.goBack()}
