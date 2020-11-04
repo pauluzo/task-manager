@@ -1,14 +1,14 @@
 export default class TaskModel {
   title: string;
   description: string;
-  reminderDate: string;
+  reminderInterval: string;
   dueDate: string;
-  isCompleted: boolean
-  constructor(title: string, description: string, reminderDate: string, dueDate: string, isCompleted: boolean) {
+  status: 'completed' | 'expired' | 'active' | 'warning'
+  constructor(title: string, description: string, reminderDate: string, dueDate: string, status) {
     this.title = title;
     this.description = description;
-    this.reminderDate = reminderDate;
+    this.reminderInterval = reminderDate;
     this.dueDate = dueDate;
-    this.isCompleted = isCompleted
+    this.status = status
   }
 }

@@ -1,0 +1,136 @@
+.active-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.main-style {
+  min-height: calc(100vh - 15px);
+  margin-left: 56px;
+}
+
+.edit-btn {
+  color: white;
+  border-radius: 30px;
+  height: 40px;
+  font-family: cursive;
+  font-size: 16px;
+  width: 90px ;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  font-family: cursive;
+}
+
+.details-header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.back-icon {
+  padding: 10px 15px;
+  color: midnightblue;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.details-title {
+  display: flex; 
+  justify-content: center; 
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.details-description {
+  width: 100%;
+  min-height: 200px;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.details-date {
+  margin-top: 10px;
+  width: 100%;      
+  height: 50px;
+  padding: 0px 10px;
+  font-family: cursive;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.details-date div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-buttons {
+  margin-top: 10px;
+  width: 100%;      
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  font-family: cursive;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button {
+  position: fixed;
+  right: 15%;
+  bottom: 10%;
+  z-Index: 30;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  background-color: midnightblue;
+  border-radius: 50%;
+}
+
+.edit-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.edit-container label {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-container label div {
+  margin: 3px 0px;
+}
+
+.input-title, .input-description {
+  flex: 1;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.date-input:focus {
+  outline: none !important;
+  border: 1px solid blue;
+  box-shadow: 0 0 5px #719ECE;
+}
+
+.date-error:focus {
+  outline: none !important;
+  border: 1px solid red;
+  box-shadow: 0 0 5px #d14b3a;
+}

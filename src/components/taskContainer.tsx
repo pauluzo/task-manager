@@ -1,9 +1,34 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import {ReactComponent as Alarm1} from "../images/alarm.svg";
 import {ReactComponent as Interval} from "../images/interval.svg";
 import TaskModel from "../models";
 
-const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
+interface TaskContainerProps {
+  index: number;
+  model: TaskModel;
+  history?: any;
+}
+
+const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerProps) : JSX.Element => {
+  let task: TaskModel = taskInfo.model;
+
+  function getColor (status : TaskModel["status"] = task.status) {
+    if(status === 'completed') return 'green'; 
+    else if(status === 'active') return 'darkblue';
+    else if (status === 'expired') return 'red';
+    else if(status === 'warning') return '#aca10d';
+    return 'darkblue';
+  }
+
+  const handleClick = () => {
+    taskInfo.history.push({
+      pathname: '/details',
+      state: {task: task}
+    });
+  }
+
+  const colorPalette = getColor();
 
   const style : React.CSSProperties = {
     width: '330px',
@@ -17,7 +42,7 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
     width: '300px',
     height: '100%',
     borderRadius: '20px',
-    border: '2px solid blue',
+    border: `2px solid ${colorPalette}`,
     right: '0',
   }
 
@@ -25,9 +50,8 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
     width: '50px',
     height: '50px',
     borderRadius: '50%',
-    border: '2px solid blue',
     left: '0',
-    backgroundColor: 'blue',
+    backgroundColor: `${colorPalette}`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -79,7 +103,8 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
 
   return (
     <div style={{...style, position: "relative"}}>
-      <div style={{...style1, position: "absolute"}}>
+      <div onClick={handleClick}
+       style={{...style1, position: "absolute"}}>
         <div style={taskDetails}>
           <div style={detail1Container}>
             <div style={titleContainer}>
@@ -91,7 +116,7 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
             </div>
             <CustomDivider 
               thickness={2}
-              color={'grey'}
+              color={colorPalette}
               width={80}
             />
             <div style={descContainer}>
@@ -104,7 +129,7 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
           </div>
           <CustomDivider 
             thickness={2}
-            color={'grey'}
+            color={colorPalette}
             height={70}
           />
           <div style={dateContainer} >
@@ -112,20 +137,20 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
               <div style={{width: '25px', height: '25px', paddingTop: '5px'}}>
                 <Interval />
               </div>
-              <div style={{fontSize: '13px',}}>
-                {task.reminderDate}
+              <div style={{fontSize: '12px',}}>
+                {task.reminderInterval}
               </div>
             </div>
             <CustomDivider
               thickness={2}
-              color={'grey'}
+              color={colorPalette}
               width={80}
             />
             <div style={{height: '50%', width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
               <div style={{width: '30px', height: '30px'}}>
                 <Alarm1 />
               </div>
-              <div style={{fontSize: '13px',}}>
+              <div style={{fontSize: '12px',}}>
                 {task.dueDate}
               </div>
             </div>
@@ -133,7 +158,7 @@ const TaskContainer : React.FC<TaskModel> = (task: TaskModel) : JSX.Element => {
         </div>
       </div>
       <div style={{...circularProg, position: "absolute", fontFamily: 'cursive'}}>
-        1
+        {taskInfo.index + 1}
       </div>
     </div>
   );
@@ -146,7 +171,7 @@ interface Props {
   width?: number,
 }
 
-const CustomDivider : React.FC<Props> = ({thickness, color, height, width}) : JSX.Element => {
+export const CustomDivider : React.FC<Props> = ({thickness, color, height, width}) : JSX.Element => {
   let dividerStyle: React.CSSProperties = height ? 
   {
     height: `${height}%`,
@@ -164,4 +189,4 @@ const CustomDivider : React.FC<Props> = ({thickness, color, height, width}) : JS
   )
 }
 
-export default TaskContainer;
+export default withRouter(TaskContainer);
