@@ -3,12 +3,13 @@ import CustomDivider from "../components/customDivider";
 import { withRouter, Link } from 'react-router-dom';
 import Switch from 'react-switch';
 import BackButton from "../components/backButton";
-import TaskModel from "../models";
 
 
 const TaskDetails = (props) => {
-  const task : TaskModel = props.location.state.task;
+  const {task, index} = props.location.state;
+  const dueDate = task.dueDate.toLocaleString();
   console.log(task);
+
   return (
     <div className='task-details'>
       <div className='details-header'>
@@ -38,7 +39,7 @@ const TaskDetails = (props) => {
       <div className='details-date'>
         <div>
           <div style={{width: '100%', display: 'block'}}>Due Date</div>
-          <span>{task.dueDate}</span>
+          <span>{dueDate}</span>
         </div>
         <div>
           Reminder
@@ -50,7 +51,8 @@ const TaskDetails = (props) => {
         <Link
           to={{
             pathname: '/task',
-            task: task
+            task,
+            index
           }}
         >
           <button style={{backgroundColor: 'blue'}} className='edit-btn'>

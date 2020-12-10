@@ -6,6 +6,8 @@ import DatePicker from "react-datepicker";
 import {addDays, addYears} from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import BackButton from '../components/backButton';
+import { activeTask } from '../bloc/activeTasks';
+import TaskModel from '../models';
 
 const validate = values => {
   const errors : any = {};
@@ -22,12 +24,8 @@ const validate = values => {
     errors.taskDescription = 'Must be 136 characters or less';
   }
 
-  if (!values.dueDate) {
-    errors.dueDate = 'Required field *';
-  }
-
   if (!values.reminderInterval) {
-    errors.reminderInterval = 'Required';
+    errors.reminderInterval = 'Required field *';
   }
 
   return errors;
@@ -36,6 +34,7 @@ const validate = values => {
 const TaskEdit = (props) => {
   const ref = React.createRef<HTMLInputElement>();
   const task = props.location && props.location.task;
+  const index = props.location && props.location.index;
 
   const tomorrow : Date = addDays(new Date(), 1);
   const [dueDate, setDueDate] = useState(task ? new Date(task.dueDate) : tomorrow);
@@ -52,6 +51,15 @@ const TaskEdit = (props) => {
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      let data : TaskModel = {
+        title: values.taskTitle,
+        description: values.taskDescription,
+        reminderInterval: values.reminderInterval,
+        dueDate: dueDate,
+        status : "active"
+      }
+
+      index ? activeTask.editTask(data, index) : activeTask.addTask(data);
     },
     validate,
   });
