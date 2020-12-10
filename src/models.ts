@@ -2,7 +2,7 @@ export default class TaskModel {
   title: string;
   description: string;
   reminderInterval: string;
-  dueDate: string;
+  dueDate: Date | string;
   status: 'completed' | 'expired' | 'active' | 'warning'
   constructor(title: string, description: string, reminderDate: string, dueDate: string, status) {
     this.title = title;

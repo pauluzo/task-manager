@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { activeTask } from '../bloc/activeTasks';
-import AddButton from '../components/addButton';
+import ReturnedList from '../components/returnedList';
 import TaskContainer from '../components/taskContainer';
 import TaskModel from '../models';
 import './activePage.css';
@@ -57,13 +57,7 @@ const ActivePage = () => {
 
   return (
     <div className='active-container'>
-      <span style={{
-        fontSize: '20px',
-        fontWeight: 800,
-        fontFamily: "cursive"
-      }}>ACTIVE TASKS</span>
-      {returnedList}
-      <AddButton/>
+      <ReturnedList returnList={returnedList} isActive={true} />
     </div>
   );
 }

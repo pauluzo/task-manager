@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {ReactComponent as Alarm1} from "../images/alarm.svg";
 import {ReactComponent as Interval} from "../images/interval.svg";
 import TaskModel from "../models";
+import CustomDivider from './customDivider';
 
 interface TaskContainerProps {
   index: number;
@@ -17,7 +18,7 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
     if(status === 'completed') return 'green'; 
     else if(status === 'active') return 'darkblue';
     else if (status === 'expired') return 'red';
-    else if(status === 'warning') return '#aca10d';
+    else if(status === 'warning') return '#dca10d';
     return 'darkblue';
   }
 
@@ -31,9 +32,11 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
   const colorPalette = getColor();
 
   const style : React.CSSProperties = {
+    width: '80%',
     minWidth: '270px',
+    maxWidth: '450px',
     height: '120px',
-    margin: '10px 5px',
+    margin: '15px 5px',
     display: 'flex',
     alignItems: 'center',
   }
@@ -44,6 +47,7 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
     borderRadius: '20px',
     border: `2px solid ${colorPalette}`,
     right: '0',
+    backgroundColor: 'white',
   }
 
   const circularProg : React.CSSProperties = {
@@ -160,31 +164,6 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
       </div>
     </div>
   );
-}
-
-interface Props {
-  thickness: number,
-  color: string,
-  height?: number,
-  width?: number,
-}
-
-export const CustomDivider : React.FC<Props> = ({thickness, color, height, width}) : JSX.Element => {
-  let dividerStyle: React.CSSProperties = height ? 
-  {
-    height: `${height}%`,
-    width: `${thickness}px`,
-    backgroundColor: color,
-    margin: 'auto 3px',
-  } : {
-    width: `${width}%`,
-    height: `${thickness}px`,
-    backgroundColor: color,
-    margin: '3px auto',
-  };
-  return (
-    <div style={dividerStyle}></div>
-  )
 }
 
 export default withRouter(TaskContainer);

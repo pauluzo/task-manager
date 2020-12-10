@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CustomDivider } from "../components/taskContainer";
+import CustomDivider from "../components/customDivider";
 import { withRouter, Link } from 'react-router-dom';
 import Switch from 'react-switch';
 import BackButton from "../components/backButton";
@@ -25,6 +25,7 @@ const TaskDetails = (props) => {
         thickness={4}
         color='midnightblue'
         width={100}
+        style={{margin: '0px'}}
       />
       <div className='details-description'>
         {task.description}

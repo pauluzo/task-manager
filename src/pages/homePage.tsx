@@ -8,19 +8,24 @@ import ActivePage from './activePage';
 import CompletedPage from './completedPage';
 import TaskEdit from './taskEditPage';
 import TaskDetail from './taskDetailPage';
+import RestrictAccess from '../components/guardedRoute';
+import ErrorPage from './errorPage';
+import HomeRedirect from './homeRedirect';
 
 const HomePage : React.FC<{history: any, location: any}> = (props) : JSX.Element => {
   return (
   <Route>
-    <React.Fragment>
+    <div>
       <SideNavContainer {...props} />
-      <main className="main-style">
-        <Route path='/active'><ActivePage /></Route>
-        <Route path='/completed'><CompletedPage/></Route>
-        <Route path='/task' ><TaskEdit /></Route>
-        <Route path='/details' ><TaskDetail /></Route>
-      </main>
-    </React.Fragment>
+      <div className="main-style">
+        <Route path='/error' component={ErrorPage} />
+        <Route exact path='/' component={HomeRedirect} />
+        <Route path='/active' component={ActivePage} />
+        <Route path='/completed' component={CompletedPage} />
+        <RestrictAccess path='/details' component={TaskDetail} />
+        <Route path='/task' component={TaskEdit} />
+      </div>
+    </div>
   </Route>
   );
 }
@@ -31,6 +36,7 @@ const SideNavContainer : React.FC<{history: any, location: any}> = (props) : JSX
   const ref = useRef(null);
 
   const clickListener = useCallback((e: MouseEvent) => {
+    // bang operator after ref.current means it cannot be null n TS shoulddn't complain. 
     if(!(ref.current! as any).contains(e.target)) {
       setToggle(false)
     }
@@ -64,7 +70,7 @@ const SideNavContainer : React.FC<{history: any, location: any}> = (props) : JSX
         }}
       >
         <SideNav.Toggle />
-        <SideNav.Nav defaultSelected="cart">
+        <SideNav.Nav defaultSelected="active">
           <NavItem eventKey="active"
             onClick={handleToggle}
           >

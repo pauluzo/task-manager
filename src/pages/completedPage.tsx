@@ -3,7 +3,7 @@ import { completedTask } from '../bloc/completedTasks';
 import TaskContainer from '../components/taskContainer';
 import TaskModel from '../models';
 import './activePage.css';
-import AddButton from '../components/addButton';
+import ReturnedList from '../components/returnedList';
 
 const data1 : TaskModel = {
   title: 'Okafor Paul',
@@ -46,15 +46,11 @@ const CompletedPage = () => {
     );
   });
 
+  console.log(returnedList)
+
   return (
     <div className='active-container'>
-      <span style={{
-        fontSize: '20px',
-        fontWeight: 800,
-        fontFamily: "cursive"
-      }}>COMPLETED TASKS</span>
-      {returnedList}
-      <AddButton/>
+      <ReturnedList returnList={returnedList} />
     </div>
   );
 }
