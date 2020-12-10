@@ -22,12 +22,8 @@ const validate = values => {
     errors.taskDescription = 'Must be 136 characters or less';
   }
 
-  if (!values.dueDate) {
-    errors.dueDate = 'Required field *';
-  }
-
   if (!values.reminderInterval) {
-    errors.reminderInterval = 'Required';
+    errors.reminderInterval = 'Required field *';
   }
 
   return errors;
