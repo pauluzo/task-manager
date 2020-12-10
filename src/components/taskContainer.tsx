@@ -12,7 +12,8 @@ interface TaskContainerProps {
 }
 
 const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerProps) : JSX.Element => {
-  let task: TaskModel = taskInfo.model;
+  const task: TaskModel = taskInfo.model;
+  const dueDate = task.dueDate.toString();
 
   function getColor (status : TaskModel["status"] = task.status) {
     if(status === 'completed') return 'green'; 
@@ -25,7 +26,10 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
   const handleClick = () => {
     taskInfo.history.push({
       pathname: '/details',
-      state: {task: task}
+      state: {
+        task,
+        index: taskInfo.index
+      }
     });
   }
 
@@ -140,7 +144,7 @@ const TaskContainer : React.FC<TaskContainerProps> = (taskInfo: TaskContainerPro
                 <Alarm1 />
               </div>
               <div style={{fontSize: '12px',}}>
-                {task.dueDate}
+                {new Date(dueDate).toDateString()}
               </div>
             </div>
             <CustomDivider

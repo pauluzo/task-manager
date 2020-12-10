@@ -26,6 +26,7 @@ class ActiveTasks {
   }
 
   editTask(data: TaskModel, index: number) : void {
+    console.log('edit task console', this.activeTasksList);
     if(this.activeTasksList.length >= index) {
       this.activeTasksList.splice(index, 1, data);
       this.activeTasks.next(this.activeTasksList);
