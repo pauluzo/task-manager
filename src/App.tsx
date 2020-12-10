@@ -1,13 +1,27 @@
-import React from 'react';
-import BlocTester, {BlocTester2} from "../src/bloc/blocTester";
+import React, { useState } from 'react';
+import HomePage from './pages/homePage';
+import SignupPage from './pages/signupPage';
+
+let defaultValue = {
+  auth : false,
+  setAuth(newAuth: boolean) {}
+}
+  
+export const LoginContext = React.createContext(defaultValue)
 
 const App = () : JSX.Element => {
+  const [auth, setAuth] = useState(true);
+
   return (
-    <div>
-      My name is Okafor Paul and I registered on {Date().toString()}
-      <BlocTester/>
-      <BlocTester2/>
-    </div>
+    <LoginContext.Provider value={{auth, setAuth}}>
+      <React.Fragment>
+        {
+          auth ? 
+          <HomePage /> :
+          <SignupPage />
+        }
+      </React.Fragment>
+    </LoginContext.Provider>
   );
 }
 

@@ -5,33 +5,33 @@ import TaskModel from '../models';
 const data1 : TaskModel = {
   title: 'Okafor Paul',
   description: 'A fair description',
-  reminderDate: '12-04-16',
+  reminderInterval: '12-04-16',
   dueDate: '15-06-16',
-  isCompleted:false,
+  status: "active"
 }
 
-const data2 = {
+const data2 : TaskModel = {
   title: 'Okafor Paul',
   description: 'A fair description',
-  reminderDate: '12-04-17',
+  reminderInterval: '12-04-17',
   dueDate: '15-06-17',
-  isCompleted: true,
+  status: "completed"
 }
 
-const data3 = {
+const data3 : TaskModel = {
   title: 'Okafor Silas',
-  description: 'A Rugged interpretation',
-  reminderDate: '18-04-18',
+  description: 'A Doctoral interpretation',
+  reminderInterval: '18-04-18',
   dueDate: '15-08-18',
-  isCompleted: true,
+  status: "warning"
 }
 
-const data4 = {
+const data4 : TaskModel = {
   title: 'Okafor Chidinma',
   description: 'A Blessing',
-  reminderDate: '18-04-19',
+  reminderInterval: '18-04-19',
   dueDate: '15-08-19',
-  isCompleted: false,
+  status: "expired"
 }
 
 const BlocTester = (): JSX.Element => {
