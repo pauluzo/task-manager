@@ -8,7 +8,7 @@ import BackButton from "../components/backButton";
 const TaskDetails = (props) => {
   const {task, index} = props.location.state;
   const dueDate = task.dueDate.toLocaleString();
-  console.log(task);
+  console.log(index);
 
   return (
     <div className='task-details'>

@@ -59,7 +59,7 @@ const TaskEdit = (props) => {
         status : "active"
       }
 
-      index ? activeTask.editTask(data, index) : activeTask.addTask(data);
+      task ? activeTask.editTask(data, index) : activeTask.addTask(data);
     },
     validate,
   });
